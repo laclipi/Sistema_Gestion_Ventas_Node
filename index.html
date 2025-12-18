@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Ventas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Gestión de Ventas</h1>
+
+  <section>
+    <h2>Agregar Producto</h2>
+    <input type="text" id="nombreProducto" placeholder="Nombre del producto" />
+    <input type="number" id="precioProducto" placeholder="Precio" />
+    <input type="number" id="stockProducto" placeholder="Stock" />
+    <button onclick="agregarProducto()">Agregar</button>
+  </section>
+
+  <section>
+    <h2>Registrar Cliente</h2>
+    <input type="text" id="nombreCliente" placeholder="Nombre del cliente" />
+    <input type="email" id="emailCliente" placeholder="Email" />
+    <button onclick="registrarCliente()">Registrar</button>
+  </section>
+
+  <section>
+    <h2>Agregar al Carrito</h2>
+    <select id="selectProducto"></select>
+    <input type="number" id="cantidadProducto" placeholder="Cantidad" />
+    <button onclick="agregarAlCarrito()">Agregar</button>
+  </section>
+
+  <section>
+    <h2>Generar Factura</h2>
+    <select id="selectCliente"></select>
+    <button onclick="generarFactura()">Generar</button>
+    <ul id="factura"></ul>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

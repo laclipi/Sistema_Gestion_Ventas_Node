@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Ventas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1>Lista de Beneficiarios</h1>
+    <button id="fetchBeneficiarios">Cargar Beneficiarios</button> <!-- Botón para cargar la tabla de beneficiarios -->
+    <table id="beneficiariosTable"> <!-- Tabla que mostrará los beneficiarios -->
+        <thead>
+            <tr>
+                <th>ID Beneficiario</th>
+                <th>ID Usuario</th>
+                <th>Nombre Beneficiario</th>
+                <th>ID Cuenta Beneficiario</th>
+            </tr>
+        </thead>
+        <tbody></tbody> <!-- Cuerpo de la tabla que se llenará dinámicamente -->
+    </table>
+
+    <script>
+        // Toma el contenido de la tabla
+        $(document).ready(function() {
+            $('#fetchBeneficiarios').click(function() { // Asocia una función al clic del botón
+                $.get('http://localhost:3000/beneficiarios', function(data) { // Realiza una solicitud GET
+                    const tbody = $('#beneficiariosTable tbody'); // Selecciona el cuerpo de la tabla
+                    tbody.empty();  // Limpia la tabla existente
+
+                    // Itera sobre cada beneficiario y lo agrega a la tabla
+                    data.forEach(usuarios => {
+                        const row = `<tr>
+                            <td>${usuarios.id_usuario}</td>
+                            <td>${usuarios.nombre}</td>
+                            <td>${usuarios.apellido}</td>
+                            <td>${usuarios.email}</td>
+                        </tr>`;
+                        tbody.append(row); // Agrega la fila a la tabla
+                    });
+                }).fail(function(err) { // Maneja los errores de solicitud
+                    console.error('Error al obtener beneficiarios:', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
